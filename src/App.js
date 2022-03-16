@@ -16,6 +16,8 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/music/:id" element={<Details />} />
+						<Route path="/album/:id" element={<Details />} />
+						<Route path="/artist/:id" element={<Details />} />
 					</Routes>
 				</main>
 			</div>
