@@ -1,17 +1,21 @@
 import './App.css';
 import Header from './Components/Header';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme();
+import Home from './Components/Home';
+import { Routes, Route } from 'react-router-dom';
+import Details from './Components/Details';
 
 function App() {
-    return (
-        <ThemeProvider theme={theme}>
-            <div className="App">
-                <Header />
-            </div>
-        </ThemeProvider>
-    );
+  return (
+    <div className="App">
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/music/:id" element={<Details />} />
+        </Routes>
+      </main>
+    </div>
+  );
 }
 
 export default App;
