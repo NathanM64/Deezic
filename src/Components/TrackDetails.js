@@ -1,7 +1,10 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { lazy, Suspense } from "react";
 import { useQuery } from "react-query";
 import { Navigate, useParams } from "react-router-dom";
+
+const Lyrics = lazy(() => import("./Lyrics"));
 
 function getUrl(value) {
   return `http://api.musixmatch.com/ws/1.1/track.get?apikey=${process.env.REACT_APP_API_KEY}&commontrack_id=${value}`
@@ -9,12 +12,11 @@ function getUrl(value) {
 
 export default function TrackDetails() {
   const { id } = useParams();
-  const { data: track, isLoading, isFetching, error } = useQuery("movie", () =>
+  const { data: track, isLoading, isFetching, error } = useQuery("track", () =>
     fetch(getUrl(id)).then((response) => response.json())
   );
-  if (error || track?.message.header.status_code == 404) return <Navigate to="/" replace={true} />
+  if ((error || track?.message.header.status_code != 200) && !isLoading) return <Navigate to="/" replace={true} />
   console.log(track)
-
   return <Container>
     {error && <div>{error}</div>}
     {(isLoading || isFetching) && <div>Loading track...</div>}
@@ -30,7 +32,9 @@ export default function TrackDetails() {
           ))}
         </Typography>
         {track.message.body.track.has_lyrics &&
-          <Button sx={{ color: 'white' }} variant="contained">Lyrics</Button>
+          <Suspense fallback="Loading...">
+            <Lyrics track_title={track.message.body.track.track_name} artist_name={track.message.body.track.artist_name} />
+          </Suspense>
         }
       </Box>
     )}

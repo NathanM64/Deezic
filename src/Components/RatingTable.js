@@ -6,10 +6,10 @@ function RatingTable({ value }) {
   const getRate = () => {
     let items = []
     for (let i = 0; i < rating; i++) {
-      items.push(<Typography variant="body2" sx={{ color: 'white' }}>l</Typography>)
+      items.push(<Typography variant="body2" key={`1-${i}`} sx={{ color: 'white' }}>l</Typography>)
     }
     for (let i = 0; i < 10 - rating; i++) {
-      items.push(<Typography variant="body2" sx={{ color: 'black' }}>l</Typography>)
+      items.push(<Typography variant="body2" key={`2-${i}`} sx={{ color: 'black' }}>l</Typography>)
     }
 
     return items;

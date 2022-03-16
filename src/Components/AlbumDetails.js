@@ -9,10 +9,10 @@ function getUrl(value) {
 
 export default function AlbumDetails() {
   const { id } = useParams();
-  const { data: album, isLoading, isFetching, error } = useQuery("movie", () =>
+  const { data: album, isLoading, isFetching, error } = useQuery("album", () =>
     fetch(getUrl(id)).then((response) => response.json())
   );
-  if (error || album?.message.header.status_code == 404) return <Navigate to="/" replace={true} />
+  if ((error || album?.message.header.status_code != 200) && !isLoading) return <Navigate to="/" replace={true} />
   console.log(album)
 
   return <Container>

@@ -9,12 +9,12 @@ function getUrl(value) {
 
 export default function ArtistDetails() {
   const { id } = useParams();
-  const { data: artist, isLoading, isFetching, error } = useQuery("movie", () =>
+  const { data: artist, isLoading, isFetching, error } = useQuery("artist", () =>
     fetch(getUrl(id)).then((response) => response.json())
   );
-  if (error || artist?.message.header.status_code == 404) return <Navigate to="/" replace={true} />
-  console.log(artist)
 
+  console.log(artist)
+  if ((error || artist?.message.header.status_code !== 200) && !isLoading) return <Navigate to="/" replace={true} />
   return <Container>
     {error && <div>{error}</div>}
     {(isLoading || isFetching) && <div>Loading artist...</div>}
