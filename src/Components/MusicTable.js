@@ -1,16 +1,27 @@
 import { TableBody, Table, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-function MusicTable() {
+function MusicTable({ data }) {
+  console.log(data[0].track)
   return (
-    <TableContainer>
+    <TableContainer sx={{ color: 'white' }}>
       <Table>
         <TableHead>
-          <TableRow></TableRow>
+          <TableRow>
+            <TableCell>Title</TableCell>
+            <TableCell>Artiste</TableCell>
+            <TableCell>Album</TableCell>
+            <TableCell>Rating</TableCell>
+          </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell></TableCell>
-          </TableRow>
+          {data.map(track => (
+            <TableRow key={track.track.track_id}>
+              <TableCell component="td" scope="row">{track.track.track_name}</TableCell>
+              <TableCell component="td" scope="row">{track.track.artist_name}</TableCell>
+              <TableCell component="td" scope="row">{track.track.album_name}</TableCell>
+              <TableCell component="td" scope="row">{track.track.track_rating}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

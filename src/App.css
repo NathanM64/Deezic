@@ -2,3 +2,12 @@
   text-decoration: none;
   color: white;
 }
+
+th,
+td {
+  color: white !important;
+}
+
+td {
+  border: none !important;
+}

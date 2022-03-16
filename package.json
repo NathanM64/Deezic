@@ -68,5 +68,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "proxy": "http://api.music-story.com/fr/"
 }
