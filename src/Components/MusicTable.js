@@ -1,7 +1,6 @@
 import { TableBody, Table, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 function MusicTable({ data }) {
-  console.log(data[0].track)
   return (
     <TableContainer sx={{ color: 'white' }}>
       <Table>
