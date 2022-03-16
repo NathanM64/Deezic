@@ -7,7 +7,7 @@ function getUrl(value) {
   return `http://api.musixmatch.com/ws/1.1/track.get?apikey=${process.env.REACT_APP_API_KEY}&commontrack_id=${value}`
 }
 
-export default function Details() {
+export default function TrackDetails() {
   const { id } = useParams();
   const { data: track, isLoading, isFetching, error } = useQuery("movie", () =>
     fetch(getUrl(id)).then((response) => response.json())
