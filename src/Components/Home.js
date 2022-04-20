@@ -7,8 +7,8 @@ import SearchBar from './SearchBar';
 
 function getUrl(value) {
   return !value.length > 0
-    ? `http://api.musixmatch.com/ws/1.1/chart.tracks.get?apikey=${process.env.REACT_APP_API_KEY}&chart_name=mxmweekly&page_size=20`
-    : `http://api.musixmatch.com/ws/1.1/track.search?apikey=${process.env.REACT_APP_API_KEY}&q=${value}&page_size=12&s_track_rating=desc`;
+    ? `/chart.tracks.get?apikey=${process.env.REACT_APP_API_KEY}&chart_name=mxmweekly&page_size=20`
+    : `/track.search?apikey=${process.env.REACT_APP_API_KEY}&q=${value}&page_size=12&s_track_rating=desc`;
 }
 
 function Home() {

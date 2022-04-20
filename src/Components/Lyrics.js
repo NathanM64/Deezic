@@ -15,7 +15,7 @@ const style = {
 };
 
 function getUrl({ track_title, artist_name }) {
-  return `http://api.musixmatch.com/ws/1.1/matcher.lyrics.get?apikey=${process.env.REACT_APP_API_KEY}&q_track=${track_title}&q_artist=${artist_name}`;
+  return `/matcher.lyrics.get?apikey=${process.env.REACT_APP_API_KEY}&q_track=${track_title}&q_artist=${artist_name}`;
 }
 
 export default function Lyrics({ track_title, artist_name }) {
@@ -40,8 +40,7 @@ export default function Lyrics({ track_title, artist_name }) {
         open={open}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        onClose={() => setOpen(false)}
-      >
+        onClose={() => setOpen(false)}>
         <Box sx={style}>
           {error && <div>{error}</div>}
           {(isLoading || isFetching) && <div>Loading track...</div>}

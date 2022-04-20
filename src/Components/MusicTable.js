@@ -22,8 +22,7 @@ function MusicTable({ data }) {
                 <Link
                   to={`/music/${track.track.commontrack_id}`}
                   element={<TrackDetails />}
-                  className="nav-link table"
-                >
+                  className="nav-link table">
                   {track.track.track_name}
                 </Link>
               </TableCell>
@@ -31,8 +30,7 @@ function MusicTable({ data }) {
                 <Link
                   to={`/artist/${track.track.artist_id}`}
                   element={<TrackDetails />}
-                  className="nav-link table"
-                >
+                  className="nav-link table">
                   {track.track.artist_name}
                 </Link>
               </TableCell>
@@ -40,8 +38,7 @@ function MusicTable({ data }) {
                 <Link
                   to={`/album/${track.track.album_id}`}
                   element={<TrackDetails />}
-                  className="nav-link table"
-                >
+                  className="nav-link table">
                   {track.track.album_name}
                 </Link>
               </TableCell>

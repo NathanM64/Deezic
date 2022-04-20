@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { Navigate, useParams } from 'react-router-dom';
 
 function getUrl(value) {
-  return `http://api.musixmatch.com/ws/1.1/artist.get?apikey=${process.env.REACT_APP_API_KEY}&artist_id=${value}`;
+  return `/artist.get?apikey=${process.env.REACT_APP_API_KEY}&artist_id=${value}`;
 }
 
 export default function ArtistDetails() {
@@ -17,16 +17,14 @@ export default function ArtistDetails() {
   } = useQuery('artist', () => fetch(getUrl(id)).then((response) => response.json()));
 
   console.log(artist);
-  if ((error || artist?.message.header.status_code !== 200) && !isLoading)
-    return <Navigate to="/" replace={true} />;
+  if (error && !isLoading) return <Navigate to="/" replace={true} />;
   return (
     <Container>
       {error && <div>{error}</div>}
       {(isLoading || isFetching) && <div>Loading artist...</div>}
       {!isLoading && !error && (
         <Box
-          sx={{ backgroundColor: 'grey', borderRadius: 1, m: 'auto', mt: 5, width: '50%', p: 2 }}
-        >
+          sx={{ backgroundColor: 'grey', borderRadius: 1, m: 'auto', mt: 5, width: '50%', p: 2 }}>
           <Typography variant="h4" textAlign="center">
             {artist.message.body.artist.artist_name}
           </Typography>

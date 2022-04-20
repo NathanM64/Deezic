@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { Navigate, useParams } from 'react-router-dom';
 
 function getUrl(value) {
-  return `http://api.musixmatch.com/ws/1.1/album.get?apikey=${process.env.REACT_APP_API_KEY}&album_id=${value}`;
+  return `/album.get?apikey=${process.env.REACT_APP_API_KEY}&album_id=${value}`;
 }
 
 export default function AlbumDetails() {
@@ -25,8 +25,7 @@ export default function AlbumDetails() {
       {(isLoading || isFetching) && <div>Loading album...</div>}
       {!isLoading && !error && (
         <Box
-          sx={{ backgroundColor: 'grey', borderRadius: 1, m: 'auto', mt: 5, width: '50%', p: 2 }}
-        >
+          sx={{ backgroundColor: 'grey', borderRadius: 1, m: 'auto', mt: 5, width: '50%', p: 2 }}>
           <Typography variant="h4" textAlign="center">
             {album.message.body.album.album_name}
           </Typography>

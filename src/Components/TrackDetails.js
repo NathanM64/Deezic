@@ -7,7 +7,7 @@ import { Navigate, useParams } from 'react-router-dom';
 const Lyrics = lazy(() => import('./Lyrics'));
 
 function getUrl(value) {
-  return `http://api.musixmatch.com/ws/1.1/track.get?apikey=${process.env.REACT_APP_API_KEY}&commontrack_id=${value}`;
+  return `/track.get?apikey=${process.env.REACT_APP_API_KEY}&commontrack_id=${value}`;
 }
 
 export default function TrackDetails() {
@@ -18,6 +18,7 @@ export default function TrackDetails() {
     isFetching,
     error
   } = useQuery('track', () => fetch(getUrl(id)).then((response) => response.json()));
+
   if ((error || track?.message.header.status_code != 200) && !isLoading)
     return <Navigate to="/" replace={true} />;
   console.log(track);
@@ -27,8 +28,7 @@ export default function TrackDetails() {
       {(isLoading || isFetching) && <div>Loading track...</div>}
       {!isLoading && !error && (
         <Box
-          sx={{ backgroundColor: 'grey', borderRadius: 1, m: 'auto', mt: 5, width: '50%', p: 2 }}
-        >
+          sx={{ backgroundColor: 'grey', borderRadius: 1, m: 'auto', mt: 5, width: '50%', p: 2 }}>
           <Typography variant="h4" textAlign="center">
             {track.message.body.track.track_name}
           </Typography>
