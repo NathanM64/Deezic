@@ -1,6 +1,6 @@
-import { Modal, Box, Typography, Button } from "@mui/material";
-import { useState } from "react";
-import { useQuery } from "react-query";
+import { Modal, Box, Typography, Button } from '@mui/material';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
 
 const style = {
   position: 'absolute',
@@ -11,24 +11,31 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 4,
+  p: 4
 };
 
 function getUrl({ track_title, artist_name }) {
-  return `http://api.musixmatch.com/ws/1.1/matcher.lyrics.get?apikey=${process.env.REACT_APP_API_KEY}&q_track=${track_title}&q_artist=${artist_name}`
+  return `http://api.musixmatch.com/ws/1.1/matcher.lyrics.get?apikey=${process.env.REACT_APP_API_KEY}&q_track=${track_title}&q_artist=${artist_name}`;
 }
 
 export default function Lyrics({ track_title, artist_name }) {
   const [open, setOpen] = useState(false);
 
-  const { data: lyrics, isLoading, isFetching, error } = useQuery("lyrics", () =>
+  const {
+    data: lyrics,
+    isLoading,
+    isFetching,
+    error
+  } = useQuery('lyrics', () =>
     fetch(getUrl(track_title, artist_name)).then((response) => response.json())
   );
 
-  if (error) return null
+  if (error) return null;
   return (
     <>
-      <Button sx={{ color: 'white' }} variant="contained" onClick={() => setOpen(!open)}>Lyrics</Button>
+      <Button sx={{ color: 'white' }} variant="contained" onClick={() => setOpen(!open)}>
+        Lyrics
+      </Button>
       <Modal
         open={open}
         aria-labelledby="modal-modal-title"
@@ -51,5 +58,5 @@ export default function Lyrics({ track_title, artist_name }) {
         </Box>
       </Modal>
     </>
-  )
+  );
 }

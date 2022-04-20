@@ -21,9 +21,6 @@
       {
         "patterns": ["@mui/*/*/*", "!@mui/material/test-utils/*"]
       }
-    ],
-    "prettier/prettier": {
-      "endOfline": "auto"
-    }
+    ]
   }
 }

@@ -10,21 +10,21 @@ import ArtistDetails from './Components/ArtistDetails';
 const queryClient = new QueryClient();
 
 function App() {
-	return (
-		<QueryClientProvider client={queryClient}>
-			<div className="App">
-				<Header />
-				<main>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/music/:id" element={<TrackDetails />} />
-						<Route path="/album/:id" element={<AlbumDetails />} />
-						<Route path="/artist/:id" element={<ArtistDetails />} />
-					</Routes>
-				</main>
-			</div>
-		</QueryClientProvider>
-	);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/music/:id" element={<TrackDetails />} />
+            <Route path="/album/:id" element={<AlbumDetails />} />
+            <Route path="/artist/:id" element={<ArtistDetails />} />
+          </Routes>
+        </main>
+      </div>
+    </QueryClientProvider>
+  );
 }
 
 export default App;

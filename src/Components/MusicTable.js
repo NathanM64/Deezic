@@ -16,12 +16,39 @@ function MusicTable({ data }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(track => (
+          {data.map((track) => (
             <TableRow key={track.track.track_id}>
-              <TableCell component="td" scope="row"><Link to={`/music/${track.track.commontrack_id}`} element={<TrackDetails />} className="nav-link table">{track.track.track_name}</Link></TableCell>
-              <TableCell component="td" scope="row"><Link to={`/artist/${track.track.artist_id}`} element={<TrackDetails />} className="nav-link table">{track.track.artist_name}</Link></TableCell>
-              <TableCell component="td" scope="row"><Link to={`/album/${track.track.album_id}`} element={<TrackDetails />} className="nav-link table">{track.track.album_name}</Link></TableCell>
-              <TableCell component="td" scope="row"> <RatingTable value={track.track.track_rating} /></TableCell>
+              <TableCell component="td" scope="row">
+                <Link
+                  to={`/music/${track.track.commontrack_id}`}
+                  element={<TrackDetails />}
+                  className="nav-link table"
+                >
+                  {track.track.track_name}
+                </Link>
+              </TableCell>
+              <TableCell component="td" scope="row">
+                <Link
+                  to={`/artist/${track.track.artist_id}`}
+                  element={<TrackDetails />}
+                  className="nav-link table"
+                >
+                  {track.track.artist_name}
+                </Link>
+              </TableCell>
+              <TableCell component="td" scope="row">
+                <Link
+                  to={`/album/${track.track.album_id}`}
+                  element={<TrackDetails />}
+                  className="nav-link table"
+                >
+                  {track.track.album_name}
+                </Link>
+              </TableCell>
+              <TableCell component="td" scope="row">
+                {' '}
+                <RatingTable value={track.track.track_rating} />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
